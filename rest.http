@@ -1,0 +1,23 @@
+###post user
+POST http://localhost:8000/api/v1/staffs
+Content-Type: application/json
+
+{
+    "firstName":"sami",
+    "lastName":"kharel",
+    "phone":787878,
+    "email":"abc@gmail.com"
+}
+
+###get staff
+GET http://localhost:8000/api/v1/staffs
+Content-Type: application/json
+
+
+###post department
+POST http://localhost:8000/api/v1/departments
+Content-Type: application/json
+
+{
+    "name":"Doctor"
+}
