@@ -6,11 +6,11 @@ const staffSchema = new mongoose.Schema({
         required:true
 
     },
-    firstName:{
+    fName:{
         type:String,
         requird:true
     },
-    lastName:{
+    lName:{
         type:String,
         requird:true
     },

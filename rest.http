@@ -19,5 +19,18 @@ POST http://localhost:8000/api/v1/departments
 Content-Type: application/json
 
 {
-    "name":"Doctor"
+    "name":"Receptionist"
+}
+
+###post
+POST http://localhost:8000/api/v1/rosters
+Content-Type: application/json
+
+{
+    "staffName":"sami",
+    "startDate":"may 08 202",
+    "endDate":"ksdj",
+    "startTime":"sjbhjs",
+    "endTime":"sdb",
+    "department":"jdbj"
 }

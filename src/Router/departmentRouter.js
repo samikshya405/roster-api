@@ -1,5 +1,5 @@
 import express from "express";
-import { insertDepartment } from "../Model/department/departmentModel.js";
+import { getDepartment, insertDepartment } from "../Model/department/departmentModel.js";
 const router = express.Router()
 
 router.post('/',async(req,res)=>{
@@ -22,4 +22,23 @@ router.post('/',async(req,res)=>{
     }
 })
 
+router.get('/',async(req,res)=>{
+    try {
+        const departments = await getDepartment()
+        departments.length>0 ?
+        res.json({
+            status:"success",
+            departments
+
+        }):
+        res.json({
+            status:"error",
+            message:"could not find any departments"
+        })
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+})
 export default router
