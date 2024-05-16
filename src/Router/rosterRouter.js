@@ -1,5 +1,5 @@
 import express from "express";
-import { insertRoster } from "../Model/roster/rosterModel.js";
+import { getRosterforAllstaff, insertRoster } from "../Model/roster/rosterModel.js";
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -19,4 +19,22 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get('/',async(req,res)=>{
+  try {
+    const result = await getRosterforAllstaff()
+    result?.length>0 ?
+    res.json({
+      status:"success",
+      result
+    })
+    :
+    res.json({
+      status:"error",
+      message:"could not fetch data something went wrong or there is not data available"
+    })
+  } catch (error) {
+    console.log(error);
+    
+  }
+})
 export default router

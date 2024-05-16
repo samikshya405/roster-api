@@ -34,3 +34,7 @@ Content-Type: application/json
     "endTime":"sdb",
     "department":"jdbj"
 }
+
+###getroster
+GET http://localhost:8000/api/v1/rosters
+Content-Type: application/json
