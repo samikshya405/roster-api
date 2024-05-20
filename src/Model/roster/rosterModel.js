@@ -7,3 +7,13 @@ export const insertRoster=(rosterDetails)=>{
 export const getRosterforAllstaff = ()=>{
     return rosterSchema.find()
 }
+
+export const getRosterBydeptAndDate =(department,date)=>{
+    return rosterSchema.find({
+        department,
+        $or:[
+            {startDate:date},
+            {endDate:date}
+        ]
+    })
+}

@@ -36,5 +36,11 @@ Content-Type: application/json
 }
 
 ###getroster
-GET http://localhost:8000/api/v1/rosters
+GET http://localhost:8000/api/v1/rosters/rosterByDate
 Content-Type: application/json
+
+{
+    "department":"Doctor",
+    "date":"2024-05-25T07:14:33.886+00:00"
+}
+
