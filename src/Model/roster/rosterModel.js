@@ -17,3 +17,11 @@ export const getRosterBydeptAndDate =(department,date)=>{
         ]
     })
 }
+
+export const updateRoster =(id,changedRoster)=>{
+    return rosterSchema.findByIdAndUpdate(id,changedRoster)
+}
+
+export const deleteRosterByID = (id)=>{
+    return rosterSchema.findByIdAndDelete(id)
+}

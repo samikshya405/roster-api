@@ -1,5 +1,5 @@
 import express from "express";
-import { getRosterBydeptAndDate, getRosterforAllstaff, insertRoster } from "../Model/roster/rosterModel.js";
+import { deleteRosterByID, getRosterBydeptAndDate, getRosterforAllstaff, insertRoster, updateRoster } from "../Model/roster/rosterModel.js";
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -61,4 +61,75 @@ router.get('/rosterByDate',async(req,res)=>{
   }
 
 })
+
+router.patch('/', async (req, res) => {
+  try {
+    const { id, ...rest } = req.body;
+    
+    if (!id) {
+      return res.status(400).json({
+        status: "failed",
+        message: "ID is required to update the roster"
+      });
+    }
+
+    const result = await updateRoster(id, { ...rest });
+    
+
+    if (result?._id) {
+      return res.json({
+        status: "success",
+        message: "Roster updated successfully"
+      });
+    } else {
+      return res.status(500).json({
+        status: "failed",
+        message: "Failed to update roster, try again later"
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: "failed",
+      message: "An error occurred while updating the roster"
+    });
+  }
+});
+
+router.delete("/", async(req,res)=>{
+  try {
+    console.log(req.body);
+    const {id} = req.body
+    console.log("hello");
+    console.log(id);
+    if (!id) {
+      return res.status(400).json({
+        status: "failed",
+        message: "ID is required to delete the roster"
+      });
+    }
+    const result = await deleteRosterByID(id)
+    console.log(result);
+    if (result?._id) {
+      return res.json({
+        status: "success",
+        message: "Roster deleted successfully"
+      });
+    } else {
+      return res.status(500).json({
+        status: "failed",
+        message: "Failed to delete roster, try again later"
+      });
+    }
+    
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: "failed",
+      message: "An error occurred while deleting the roster"
+    });
+    
+  }
+})
+
 export default router

@@ -44,3 +44,21 @@ Content-Type: application/json
     "date":"2024-05-25T07:14:33.886+00:00"
 }
 
+
+###update roster
+PATCH http://localhost:8000/api/v1/rosters
+Content-Type: application/json
+
+{
+    "id": "664b2a1653b82fd3e1eb3031",
+    "endTime": "19:00"
+  }
+
+
+###delete roster
+DELETE http://localhost:8000/api/v1/rosters
+Content-Type: application/json
+
+{
+    "id":"664b2a6d53b82fd3e1eb303a"
+}
